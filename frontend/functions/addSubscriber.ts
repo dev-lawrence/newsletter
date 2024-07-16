@@ -25,7 +25,7 @@ exports.handler = async function (event) {
         statusCode: 200,
         body: JSON.stringify({ response }),
       };
-    } catch (error) {
+    } catch (error:any) {
       console.error(
         'Error Subscribing:',
         error.response ? error.response.body : error.message
