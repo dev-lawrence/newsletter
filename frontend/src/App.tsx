@@ -37,10 +37,14 @@ const App = () => {
     event.preventDefault();
     validateEmail(email);
 
+    if (!email) {
+      return;
+    }
+
     try {
       setLoading(true);
 
-      const response = await fetch('http://localhost:5000/addSubscriber', {
+      const response = await fetch('/api/addSubscriber', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -56,7 +60,7 @@ const App = () => {
         return;
       }
 
-      setSuccessMessage(data);
+      setSuccessMessage(data.response);
       setErrorMessage('');
     } catch (error: unknown) {
       if (error instanceof Error) {
